@@ -11,7 +11,7 @@ license: GPL-3.0
 
 # https://github.com/snapcore/snapcraft/issues/4187
 environment:
-  PATH: "$SNAP/libexec/rockcraft:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  PATH: "$SNAP/sbin:$SNAP/bin:$SNAP/usr/sbin:$SNAP/usr/bin:$SNAP/libexec/rockcraft:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   LD_LIBRARY_PATH: "$SNAP/none"
 
 apps:
@@ -114,5 +114,7 @@ parts:
     plugin: go
     source: https://github.com/canonical/chisel.git
     source-commit: bd27f8700cd7d2a6b4e0df6b10c3761c83a70485
+    build-attributes:
+        - enable-patchelf
     build-snaps:
       - go/1.18/stable
